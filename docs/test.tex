@@ -1,0 +1,18 @@
+\begin{proof}
+Antag at $f$ ikke er begrænset, dette medføre at
+
+\begin{equation}\label{ligningTilModstrid}
+    \forall k \in \N\; \exists \mathbf{x}^k \in K : \lvert f(\mathbf{x}^k) \rvert > k
+\end{equation}
+Derfor kan vektorfølgen $\{\mathbf{x}^k\}^\infty_{k=1}$ opstilles således at 
+$\mathbf{x}^k \in K \; \forall k \in \N$ og 
+$\lvert f(\mathbf{x}^k) \rvert > k \; \forall k \in \N$. 
+Derfor eksistere der per Bolzano-Weierstrass sætning, en konvergent delfølge 
+$\{\mathbf{x}^{k_m}\}_{m=1}^\infty$, som konvergere imod et $\mathbf{x} \in K$. 
+Da $f$ er kontinuer gælder det ved følgekontinueritet at 
+$\lim_{marrow \infty} f(\mathbf{x}^{k_m}) = f(\mathbf{x})$. 
+Men vi har også 
+$\lim_{m \rightarrow \infty} \lvert f(\mathbf{x}^{k_m}) \rvert = \lvert f(\mathbf{x}) \rvert$. 
+Derfor er følgen $\{\lvert f(\mathbf{x}^{k_m})\rvert\}^\infty_{m = 1}$ også konvergent og dermed også begrænset, 
+men dette er en modsigelse med \eqref{ligningTilModstrid}. 
+\end{proof}

@@ -1,4 +1,5 @@
 from numpy import log, cos, sin, tan, sqrt, zeros, linspace, sum, pi
+from function import f, exactValue 
 
 def midpoint(xi,f):
     """
@@ -33,6 +34,9 @@ if __name__ == "__main__":
     # f = lambda x: sqrt(1 + (3 * x**2)**2)
     # f = lambda x: sqrt(1 + (1 + tan(x)**2)**2)
     # f = lambda x: sqrt(1 + (1/(x**2 + 1))**2)
+    i = 1
+    x = linspace(a, b, i)
+    I = midpoint
     for n in [2, 4, 8, 16]:
         x = linspace(a, b, n)
         I = midpoint(x, f)
