@@ -21,7 +21,7 @@ x = linspace(0.0, 1.0, 100, endpoint=True)
 x0 = 0.8
 
 # We set the value of the parameter
-r = 3.5699456718695445
+r = 3.6
 
 
 # Setup the plot

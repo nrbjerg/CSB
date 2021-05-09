@@ -45,7 +45,7 @@ for N in range(10,51,2):   # Choose N values
     
     # Parameters for Lagrange interpolation
     h = abs(b-a)/N
-    x_values = [3 * (1 - cos(k*pi / N))/2 for k in range(N+1)] 
+    x_values = [3/2 * (1 - cos(k*pi / N)) for k in range(N+1)] 
     y_values = [f(x_values[k]) for k in range(N+1)]
    
     # New points for calculating the error max|f(x)-p_N(x)|

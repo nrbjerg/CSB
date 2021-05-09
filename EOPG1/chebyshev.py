@@ -2,6 +2,7 @@
 
 import decimal
 from math import pi, cos
+import numpy as np
 context = decimal.getcontext()  # Get the current default context
 digits = 30                     # Significant digits
 context.prec = digits           
@@ -94,34 +95,41 @@ print('          Precision = ',digits) # print precision
 print('-'*34)
 print('  N     Error bound       Error')
 print('-'*34)
-errors = []
-for N in range(10,51,2):   # Choose range of N
+
+
+# Parameters for Lagrange interpolation
+N = 5
+h = abs(b-a)/D(N)
+x_values = [a + h * k for k in range(N+1)] 
+y_values = [f(x_values[k]) for k in range(N+1)]
+
+# New points for calculating the error max|f(x)-p_N(x)|
+N_test = 797 # 1297
+h_test = abs(b-a)/D(N_test)
+x_test = [a+k*h_test for k in range(N_test+1)]
     
-    # Parameters for Lagrange interpolation
-    h = abs(b-a)/D(N)
-    x_values = [decimal.Decimal(3/2 * (1-cos(k * pi/N))) for k in range(N+1)] 
-    y_values = [f(x_values[k]) for k in range(N+1)]
-   
-    # New points for calculating the error max|f(x)-p_N(x)|
-    N_test = 797 # 1297
-    h_test = abs(b-a)/D(N_test)
-    x_test = [a+k*h_test for k in range(N_test+1)]
-     
-    # Calculate the approximation and the solution
-    approx = lagrange(x_test, x_values, y_values)
-    y_test = [f(x_test[k]) for k in range(N_test+1)]
-    
-    # Calculate the error
-    from operator import sub, abs
-    temp1 = list(map(sub, y_test, approx))
-    temp2 = list(map(abs, temp1))
-    error = max(temp2)
-    
-    # Print a table
-    errors.append(error)
+# Calculate the approximation and the solution
+approx = lagrange(x_test, x_values, y_values)
+y_test = [f(x_test[k]) for k in range(N_test+1)]
+# errors = [y_test[k] - f(x_test[k]) for k in range(N_test + 1)]
+
+# Calculate the error
+from operator import sub, abs
+temp1 = list(map(sub, y_test, approx))
+errors = list(map(abs, temp1))
+
+
+# Print a table
     
 import matplotlib.pyplot as plt 
 import numpy as np
 
-plt.plot(np.arange(10, 51, 2), errors)
+plt.style.use("ggplot")
+plt.ylabel("absolut fejl")
+plt.xlabel("x koordinat")
+plt.title(f"Ækvidistante (N = {N})")
+plt.plot(x_test, approx)
+plt.plot(x_test, y_test)
+plt.legend(["Lagrange interpolation", "f(x)"])
 plt.show()
+

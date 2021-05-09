@@ -6,3 +6,4 @@ def f (x: float) -> float:
     return math.pow(x - math.sqrt(2), 2)
 
 exactValue = 15 - (31 * math.sqrt(2)) / 3
+# print(exactValue)

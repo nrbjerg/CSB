@@ -12,8 +12,8 @@ def LogisticMap(r,x):
     return r * x * (1.0 - x)
 
 # Setup parameter range
-rlow  = 3.095
-rhigh = 3.105
+rlow  = 3.0
+rhigh = 3.45
 
 
 # Setup the plot
@@ -43,16 +43,18 @@ plot([rlow], [1.0], 'k,')
 ic = 0.2
 # Establish the arrays to hold the set of iterates at each parameter value
 # The iterates we'll throw away
-nTransients = 200
+nTransients = 2_000
 
 # This sets how much the attractor is filled in
-nIterates = 200_000
+nIterates = 10_000
 
 # This sets how dense the bifurcation diagram will be
-nSteps = 100
+nSteps = 10_000
 
 # Sweep the control parameter over the desired range
 rInc = (rhigh-rlow)/float(nSteps)
+from tqdm import trange
+
 for r in arange(rlow,rhigh,rInc):
     # Set the initial condition to the reference value
     state = ic
