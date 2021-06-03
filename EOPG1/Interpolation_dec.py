@@ -95,7 +95,7 @@ print('-'*34)
 print('  N     Error bound       Error')
 print('-'*34)
 errors = []
-for N in range(10,51,2):   # Choose range of N
+for N in range(40, 51, 1):   # Choose range of N
     
     # Parameters for Lagrange interpolation
     h = abs(b-a)/D(N)
@@ -118,10 +118,4 @@ for N in range(10,51,2):   # Choose range of N
     error = max(temp2)
     
     # Print a table
-    errors.append(error)
-    
-import matplotlib.pyplot as plt 
-import numpy as np
-
-plt.plot(np.arange(10, 51, 2), errors)
-plt.show()
+    print("{:3d}   {:14.5E}   {:13.5E}".format(N, equi_bound(h, N), error))

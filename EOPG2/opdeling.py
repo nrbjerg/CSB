@@ -2,7 +2,7 @@ from numpy import divide, diff, append, array, union1d, where
 from error_estimate import error_estimate
 import matplotlib.pyplot as plt
 from function import f, exactValue
-from midpoint import midpoint
+from simpsons import simpsons
 
 def adaptive_refinement(f,a,b,tol,kvadratur):
     """
@@ -54,10 +54,10 @@ def adaptive_refinement(f,a,b,tol,kvadratur):
 if __name__ == "__main__":
     tol = 1.0E-08
 
-    m, I, E = adaptive_refinement(f, 0.0, 1.5, tol, midpoint)
-    print(f"Integral ~ {I}, error = {exactValue-I}, error estimate = {E}, numberOfPoints = {m}")
-    m, I, E = adaptive_refinement(f, 1.5, 3.0, tol, midpoint)
-    print(f"Integral ~ {I}, error = {exactValue-I}, error estimate = {E}, numberOfPoints = {m}")
+    m, I, E = adaptive_refinement(f, 0.0, 1.5, tol, simpsons)
+    print(f"Integral ~ {I}, error estimate = {E}, numberOfPoints = {m}")
+    m, I, E = adaptive_refinement(f, 1.5, 3.0, tol, simpsons)
+    print(f"Integral ~ {I}, error estimate = {E}, numberOfPoints = {m}")
     
     # Integral ~ -0.9425985975757181, error = 1.329058453053734, error estimate = 3.142930585393379e-09, numberOfPoints = 16384
     # Integral ~ 1.3290584529338703, error = -0.9425985974558544, error estimate = 3.143213689196797e-09, numberOfPoints = 16385

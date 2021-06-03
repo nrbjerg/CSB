@@ -64,10 +64,4 @@ for N in range(10,51,2):   # Choose N values
     error = max(temp2)
     
     # Print a table
-    errors.append(error)
-    
-import matplotlib.pyplot as plt 
-import numpy as np
-
-plt.plot(np.arange(10, 51, 2), errors)
-plt.show()
+    print("{:3d}   {:14.5E}   {:13.5E}".format(N, equi_bound(h, N), error))

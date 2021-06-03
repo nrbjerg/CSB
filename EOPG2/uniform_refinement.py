@@ -11,7 +11,7 @@ def uniform_refinement(f, a, b, F):
         m  = 2**i # number of subintervals
         xi = linspace(a, b, m+1) # endpoints of the intervals
         #I, E = trapezoid(xi, f, F)
-        I, E = midpoint(xi, f, F)
+        I, E = midpoint(xi, f, F) # Dosnt work with the current version (It needs to return the error aswell)
         h   = append(h, xi[1]-xi[0])
         err = append(err, sum(E))
     # plot the error behaviour vs expected h^2
@@ -28,6 +28,8 @@ def uniform_refinement(f, a, b, F):
     plt.figure(1)
     plt.clf()
     plt.plot(0.5*(xi[0:-1]+xi[1:]), h[-1]/(b-a)*E,'-x',lw=2,markersize=10)
+    plt.xscale("log")
+    plt.yscale("log")
     plt.xlabel('x',fontsize=fs)
     plt.ylabel('error',fontsize=fs)
     plt.grid(True)

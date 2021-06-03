@@ -1,37 +1,37 @@
-from numpy import log, cos, sin, tan, sqrt, zeros, linspace, sum, pi
+import numpy as np
 from function import f, exactValue
 
-def simpsons(xi,f):
+def trapezoid(xi, f, F=[]):
     """
-    Use simpsons quadrature based on the subdivision xi
-
+    Use trapezoid quadrature based on the subdivision xi
     Input:
     xi: location of nodes, defining the subdivision of the interval
     (including the endpoints)
     f:  function to integrate
 
+
     Output:
 
     I = the numerical approximation to the integral on each subinterval
+
     """
     m = len(xi)-1
-    I = zeros(m)
+    I = np.zeros(m)
     for i in range(m):
         hi = xi[i+1]-xi[i]
-        ci = (xi[i+1]+xi[i])/2
-        I[i] = (hi / 6) * (f(xi[i]) + 4*f(ci) + f(xi[i+1]))
+        I[i] = hi/2*(f(xi[i])+f(xi[i+1]))
     return I
 
-# Test midpoint
+## Test Trapezoid
 if __name__ == "__main__":
     a = 0
     b = 3
-    i = 3
-    x = linspace(a, b, i)
-    I = simpsons(x, f)
+    i = 2
+    x = np.linspace(a, b, i)
+    I = trapezoid(x, f)
     while (abs(I - exactValue) >= 10E-8):
         i += 1
-        x = linspace(a, b, i)
-        I = simpsons(x, f)
+        x = np.linspace(a, b, i)
+        I = trapezoid(x, f)
     
     print(f"Number of points {i}")

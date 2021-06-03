@@ -53,7 +53,6 @@ nSteps = 10_000
 
 # Sweep the control parameter over the desired range
 rInc = (rhigh-rlow)/float(nSteps)
-from tqdm import trange
 
 for r in arange(rlow,rhigh,rInc):
     # Set the initial condition to the reference value

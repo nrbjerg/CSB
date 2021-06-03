@@ -21,7 +21,7 @@ def trapezoid(xi, f, F=[]):
     for i in range(m):
         hi = xi[i+1]-xi[i]
         I[i] = hi/2*(f(xi[i])+f(xi[i+1]))
-    return sum(I)
+    return I
 
 ## Test Trapezoid
 if __name__ == "__main__":

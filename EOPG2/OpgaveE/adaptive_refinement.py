@@ -2,7 +2,8 @@ from numpy import divide, diff, append, array, union1d, where
 from error_estimate import error_estimate
 import matplotlib.pyplot as plt
 from function import f, exactValue
-from midpoint import midpoint
+from simpsons import simpsons
+from trapezoid import trapezoid
 
 def adaptive_refinement(f,a,b,tol,kvadratur):
     """
@@ -52,12 +53,15 @@ def adaptive_refinement(f,a,b,tol,kvadratur):
 
 # Test error_estimate
 if __name__ == "__main__":
+    a = 0.0
+    b = 3.0
     tol = 1.0E-08
 
-    m, I, E = adaptive_refinement(f, 0.0, 1.5, tol, midpoint)
-    print(f"Integral ~ {I}, error = {exactValue-I}, error estimate = {E}, numberOfPoints = {m}")
-    m, I, E = adaptive_refinement(f, 1.5, 3.0, tol, midpoint)
+    m, I, E = adaptive_refinement(f,a,b,tol, trapezoid)
     print(f"Integral ~ {I}, error = {exactValue-I}, error estimate = {E}, numberOfPoints = {m}")
     
-    # Integral ~ -0.9425985975757181, error = 1.329058453053734, error estimate = 3.142930585393379e-09, numberOfPoints = 16384
-    # Integral ~ 1.3290584529338703, error = -0.9425985974558544, error estimate = 3.143213689196797e-09, numberOfPoints = 16385
+    m, I, E = adaptive_refinement(f,a,b,tol, simpsons)
+    print(f"Integral ~ {I}, error = {exactValue-I}, error estimate = {E}, numberOfPoints = {m}")
+    # Output
+    # Integral ~ 0.38645985553796314, error = -5.994726937075257e-11, error estimate = 3.143123284713624e-09, numberOfPoints = 65534
+    # Integral ~ 0.3864598557684714, error = -2.904555485017113e-10, error estimate = 1.263274524962636e-09, numberOfPoints = 12
