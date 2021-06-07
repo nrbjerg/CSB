@@ -35,7 +35,7 @@ cs = np.linspace(0, 0.02, num = 100)
 t_max = np.zeros(len(cs))
 z_max = np.zeros(len(cs))
 
-for idx, c in enumerate(cs):
+for idx, c in enumerate(cs)
     X1 = np.zeros(N + 1)
     X2 = np.zeros(N + 1)
 

@@ -23,7 +23,6 @@ def trapezoid(xi, f, F=[]):
         I[i] = hi/2*(f(xi[i])+f(xi[i+1]))
     return I
 
-## Test Trapezoid
 if __name__ == "__main__":
     a = 0
     b = 3

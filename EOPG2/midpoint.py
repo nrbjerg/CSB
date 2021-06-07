@@ -35,10 +35,10 @@ if __name__ == "__main__":
     b = 3
     i = 2
     x = linspace(a, b, i)
-    I = midpoint(x, f)
-    while (abs(I - exactValue) >= 10E-8):
+    I, _ = midpoint(x, f)
+    while (abs(sum(I) - exactValue) >= 10E-8):
         i += 1
         x = linspace(a, b, i)
-        I = midpoint(x, f)
+        I, _ = midpoint(x, f)
         
     print(f"Number of points {i}")

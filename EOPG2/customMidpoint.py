@@ -14,7 +14,6 @@ def midpoint(xi,f):
 
     I = the numerical approximation to the integral on each subinterval
     """
-
     m = len(xi)-1
     I = np.zeros(m)
     for i in range(m):

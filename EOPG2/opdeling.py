@@ -39,15 +39,6 @@ def adaptive_refinement(f,a,b,tol,kvadratur):
         m  = len(xi)
         
     # plot the error behaviour vs expected m^(-2)
-    plt.figure(1)
-    plt.clf()
-    plt.loglog(M, err, 'b-x',lw=3, markersize=10,label='Numerical error')
-    plt.loglog(M, M**(-2),'g-',lw=3, markersize=10,label='M**(-2)')
-    plt.xlabel('M',fontsize=fs)
-    plt.ylabel('error',fontsize=fs)
-    plt.legend()
-    plt.grid(True)
-    plt.draw()
     return m, sum(I), sum(E)
 
 # Test error_estimate
